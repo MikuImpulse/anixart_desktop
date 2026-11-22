@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Anixart
 Comment=Смотреть аниме в Anixart
-Exec=Anixart
+Exec=anixart-desktop
 Icon=anixart-desktop
 Terminal=false
 Type=Application

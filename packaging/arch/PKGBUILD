@@ -1,6 +1,6 @@
 pkgname=anixart-desktop
 pkgver=1.0.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Native Anixart client'
 arch=('x86_64')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'qrencode'

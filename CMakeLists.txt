@@ -69,6 +69,10 @@ include(GNUInstallDirs)
 install(TARGETS Anixart RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    install(CODE "
+        file(CREATE_LINK \"$<TARGET_FILE_NAME:Anixart>\"
+            \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/anixart-desktop\" SYMBOLIC)
+    ")
     install(FILES anixart.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
     install(FILES assets/anixart_app.png DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/512x512/apps RENAME anixart-desktop.png)
 
@@ -79,12 +83,13 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
 
     set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+    set(CPACK_DEBIAN_PACKAGE_RELEASE 2)
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     set(CPACK_DEBIAN_PACKAGE_SECTION "video")
     set(CPACK_DEBIAN_PACKAGE_DEPENDS "qml6-module-qtcore, qml6-module-qtqml-models, qml6-module-qtqml-workerscript, qml6-module-qtquick, qml6-module-qtquick-window, qml6-module-qtquick-controls, qml6-module-qtquick-dialogs, qml6-module-qtquick-layouts, qml6-module-qtquick-templates, qt6-qpa-plugins, qt6-wayland, qt6-svg-plugins, qt6-image-formats-plugins, ca-certificates, glib-networking, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav")
 
     set(CPACK_RPM_FILE_NAME RPM-DEFAULT)
-    set(CPACK_RPM_PACKAGE_RELEASE 1)
+    set(CPACK_RPM_PACKAGE_RELEASE 2)
     set(CPACK_RPM_PACKAGE_REQUIRES "qt6-qtdeclarative, qt6-qtwayland, ca-certificates, glib-networking, gstreamer1-plugins-base, gstreamer1-plugins-good, gstreamer1-plugins-bad-free, gstreamer1-plugin-libav")
     include(CPack)
 endif()
