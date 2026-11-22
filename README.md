@@ -1,5 +1,5 @@
 # Anixart Desktop
-Unofficial desktop client (vibecoded) for "Anixart" anime library populated in CIS written in C++ && Qt window library
+Unofficial desktop client (vibecoded) for "Anixart" anime library popular in the CIS, written in C++ && Qt window library
 
 ## Support
 - Windows 10 x64 build 17763 (1809) or later
