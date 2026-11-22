@@ -20,4 +20,4 @@ Unofficial desktop client (vibecoded) for "Anixart" anime library popular in the
 ###### P.S. for Anixart devs
 i reversed your API from apk file to build this client. if you intended those details to stay private im sorry for publishing it in source code.
 
-my username is **ishakbek**. if you dont like me to take the source code down please send me an in-app notification, then i will remove the project or keep only the release packages available depending on what you are comfortable with
+my username is **ishakbek**. if you’d like me to take the API source code down please send me an in-app notification, then i will remove the project or keep only the release packages available depending on what you are comfortable with
