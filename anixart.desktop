@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Anixart
+Comment=Смотреть аниме в Anixart
+Exec=Anixart
+Icon=anixart-desktop
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;Video;
+StartupWMClass=Anixart

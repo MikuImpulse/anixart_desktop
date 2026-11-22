@@ -253,7 +253,7 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     visible: root.category === "my" && !root.hasCriteria
                     source: "qrc:/assets/empty_tab_ed.png"
-                    sourceSize: Qt.size(190, 190)
+                    sourceClipRect: Qt.rect(0, 0, 190, 171)
                     fillMode: Image.PreserveAspectFit
                     mipmap: true
                 }

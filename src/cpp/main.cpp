@@ -44,6 +44,12 @@ private:
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_WIN
+    if (!qEnvironmentVariableIsSet("QSG_USE_SIMPLE_ANIMATION_DRIVER")) {
+        qputenv("QSG_USE_SIMPLE_ANIMATION_DRIVER", "1");
+    }
+#endif
+
     QGuiApplication app(argc, argv);
 #ifdef Q_OS_WIN
     const QDir runtime(QCoreApplication::applicationDirPath());

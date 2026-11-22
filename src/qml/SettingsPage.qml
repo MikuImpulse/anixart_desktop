@@ -5,26 +5,44 @@ import QtQuick.Layouts 1.15
 
 Item {
     id: root
-    readonly property Flickable pullSurface: settingsScroll.contentItem
+    readonly property Flickable pullSurface: settingsScroll
 
     function refresh() { window.syncPlaybackSettings(); }
 
-    ScrollView {
+    Flickable {
         id: settingsScroll
         anchors.fill: parent
-        contentWidth: availableWidth
-        contentHeight: contentCol.implicitHeight + topPadding + bottomPadding + 40
+        contentWidth: width
+        contentHeight: contentCol.y + contentCol.implicitHeight + 36
+        flickableDirection: Flickable.VerticalFlick
         clip: true
-        topPadding: 32
-        bottomPadding: 36
-        leftPadding: 24
-        rightPadding: 24
 
-        ScrollBar.vertical: AppScrollBar {}
+        WheelHandler {
+            target: null
+            acceptedDevices: PointerDevice.Mouse
+            onWheel: function(event) {
+                const delta = event.pixelDelta.y
+                    || (event.angleDelta.y / 120) * Qt.styleHints.wheelScrollLines * 24
+                if (!delta)
+                    return
+
+                const top = settingsScroll.originY - settingsScroll.topMargin
+                const bottom = settingsScroll.originY + settingsScroll.contentHeight
+                    + settingsScroll.bottomMargin - settingsScroll.height
+                settingsScroll.cancelFlick()
+                settingsScroll.contentY = Math.max(top, Math.min(bottom, settingsScroll.contentY - delta))
+            }
+        }
+
+        ScrollBar.vertical: AppScrollBar {
+            anchors.right: settingsScroll.right
+            anchors.rightMargin: 8
+        }
 
         ColumnLayout {
             id: contentCol
             width: Math.min(parent.width - 48, 800)
+            y: 32
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 24
 
