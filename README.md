@@ -11,6 +11,12 @@ Unofficial desktop client (vibecoded) for "Anixart" anime library popular in the
 - **Fedora:** same as Debian but for "dnf" package manager: dnf install /path/to/{downloaded_package_name}.deb
 - **Arch:** "sudo pacman -U /path/to/{package}.pkg.tar.zst"
 
+## Known bugs
+- Posting any comments is not working
+- Changing the rating of a comment or post is not working
+- There may be artifacts in the video player
+- VKontakte (may be Yandex, Telegram too) authorization is not working
+
 ###### P.S. for Anixart devs
 i reversed your API from apk file to build this client. if you intended those details to stay private im sorry for publishing it in source code.
 
