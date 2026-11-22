@@ -56,7 +56,7 @@ Run the command from your download folder and replace the example filename with 
 - There may be artifacts in the video player
 - VKontakte (may be Yandex, Telegram too) authorization is not working
 
-## P.S. for Anixart devs
+###### P.S. for Anixart devs
 
 i reversed your API from apk file to build this client. if you intended those details to stay private im sorry for publishing it in source code.
 
