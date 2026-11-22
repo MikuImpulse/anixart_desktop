@@ -1,0 +1,12 @@
+pkgname=anixart-desktop
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Native Anixart client'
+arch=('x86_64')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'qrencode'
+         'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav' 'glib-networking' 'ca-certificates')
+makedepends=('cmake')
+
+package() {
+    DESTDIR="$pkgdir" cmake --install "${ANIXART_BUILD_DIR:?Set ANIXART_BUILD_DIR to the compiled project}" --prefix /usr
+}

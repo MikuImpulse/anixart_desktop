@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вход в Anixart</title>
+<style>
+    body { background: #141218; color: #e6e1e5; font: 16px system-ui, sans-serif; display: grid; min-height: 100vh; place-items: center; margin: 0; }
+    main { background: #211a2d; padding: 28px; border-radius: 18px; width: min(360px, calc(100vw - 88px)); }
+    h1 { margin: 0 0 18px; font-size: 23px; }
+    button { color: #211a2d; background: #cfbcff; border: 0; border-radius: 16px; padding: 9px 16px; font: inherit; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: default; }
+    p { margin: 16px 0 0; color: #cac4d0; }
+</style>
+<main>
+    <h1>Вход в Anixart через Google</h1>
+    <button id="login" disabled>Выбрать аккаунт Google</button>
+    <p id="status" role="status">Подключаемся к Google…</p>
+</main>
+<script type="module">
+    const button = document.getElementById("login");
+    const status = document.getElementById("status");
+    const sdk = "https://www.gstatic.com/firebasejs/12.6.0";
+
+    try {
+        const { initializeApp } = await import(sdk + "/firebase-app.js");
+        const { initializeAuth, inMemoryPersistence, browserPopupRedirectResolver, GoogleAuthProvider, signInWithPopup } =
+            await import(sdk + "/firebase-auth.js");
+        const app = initializeApp({
+            apiKey: "AIzaSyBFPckWOsp0MEqb_1gwszvM1ILdUixM-uw",
+            authDomain: "anime-ad-eb8b3.firebaseapp.com",
+            projectId: "anime-ad-eb8b3"
+        });
+        const auth = initializeAuth(app, {
+            persistence: inMemoryPersistence,
+            popupRedirectResolver: browserPopupRedirectResolver
+        });
+        button.disabled = false;
+        status.textContent = "Выберите аккаунт, привязанный к Anixart.";
+
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            try {
+                const { user } = await signInWithPopup(auth, new GoogleAuthProvider());
+                const response = await fetch(window.location.pathname, {
+                    method: "POST",
+                    body: await user.getIdToken(),
+                    redirect: "error"
+                });
+                if (!response.ok) throw new Error("callback");
+                status.textContent = "Аккаунт передан. Вернитесь в Anixart, чтобы увидеть результат входа.";
+            } catch (error) {
+                status.textContent = error.code === "auth/popup-blocked"
+                    ? "Разрешите всплывающие окна для этой страницы и попробуйте снова."
+                    : error.code === "auth/popup-closed-by-user" ? "Окно Google закрыто. Можно попробовать снова."
+                    : error.code === "auth/unauthorized-domain" ? "Google отклонил локальный адрес. Войдите через QR/PIN."
+                    : "Вход не завершён. Проверьте браузер и соединение или войдите через QR/PIN.";
+                button.disabled = false;
+            }
+        });
+    } catch {
+        status.textContent = "Не удалось загрузить вход Google. Войдите через QR/PIN или обновите страницу.";
+    }
+</script>
+</html>
