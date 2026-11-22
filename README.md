@@ -55,9 +55,3 @@ Run the command from your download folder and replace the example filename with 
 - Changing the rating of a comment or post is not working
 - There may be artifacts in the video player
 - VKontakte (may be Yandex, Telegram too) authorization is not working
-
-###### P.S. for Anixart devs
-
-i reversed your API from apk file to build this client. if you intended those details to stay private im sorry for publishing it in source code.
-
-my username is **ishakbek**. if you’d like me to take the API source code down please send me an in-app notification, then i will remove the project or keep only the release packages available depending on what you are comfortable with
