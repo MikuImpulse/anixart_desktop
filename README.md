@@ -9,7 +9,7 @@ Unofficial desktop client for Anixart, an anime library popular in the CIS. Writ
 
 ## How is my project different from other "Anixart PC" clients?
 
-My project uses the lightweight Qt framework for C++ and runs as a native app, whereas most other projects use Electron and add unnecessary features like upscaling to 4K using neural networks (Hi, Anix!)\
+My project uses the lightweight Qt framework for C++ and runs as a native app, whereas most other projects use Electron and add unnecessary features like upscaling to 4K using AI (Hi, Anix!)\
 This gives it an advantage because it supports less powerful hardware
 
 ## Installation
