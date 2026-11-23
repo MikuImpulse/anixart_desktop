@@ -1,6 +1,6 @@
 # Anixart Desktop
 
-Unofficial desktop client (vibecoded) for Anixart, an anime library popular in the CIS. Written in C++ with Qt.
+Unofficial desktop client for Anixart, an anime library popular in the CIS. Written in C++ with Qt.
 
 ## Support
 
